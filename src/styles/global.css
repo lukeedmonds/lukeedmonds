@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  @apply bg-background font-sans text-primary antialiased;
+}
+
+a {
+  @apply underline-offset-8 transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-accent;
+}
