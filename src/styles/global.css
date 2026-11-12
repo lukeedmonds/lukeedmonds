@@ -4,19 +4,56 @@
 
 :root {
   color-scheme: light;
+  --wall: #2f8f45;
+  --wall-deep: #24753a;
+  --floor: #c62828;
+  --sky: #15224b;
+  --moon: #f7f1c8;
+  --lemon: #f4d35e;
+  --flame: #f08a24;
+  --blush: #e8b8c8;
+  --ink: #1a1a1a;
+  --paper: #fff8e7;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-body {
-  @apply bg-background font-sans text-primary antialiased;
+@layer base {
+  body {
+    @apply bg-wall font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    background: var(--lemon);
+    color: var(--ink);
+  }
 }
 
-a {
-  @apply underline-offset-8 transition-colors duration-200;
+@layer components {
+  .ink-border {
+    @apply border-[3px] border-ink;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl;
+  }
+
+  .cta-primary {
+    @apply inline-flex items-center gap-2 border-[3px] border-ink bg-lemon px-5 py-2.5 font-semibold text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-flame hover:text-paper;
+  }
+
+  .cta-secondary {
+    @apply inline-flex items-center gap-2 border-[3px] border-ink bg-paper px-5 py-2.5 font-semibold text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-blush;
+  }
 }
 
-a:hover {
-  @apply text-accent;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
