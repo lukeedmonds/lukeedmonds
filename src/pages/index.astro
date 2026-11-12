@@ -1,114 +1,123 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { profile, highlights, projects, experience, capabilities } from '@data/profile';
+import RoomHero from '@components/RoomHero.astro';
+import { profile, experience, projects, capabilities } from '@data/profile';
 ---
 
 <BaseLayout>
-  <section class="flex min-h-screen flex-col md:flex-row">
-    <div class="flex flex-1 flex-col justify-between bg-white px-8 py-10 shadow-2xl md:px-12 lg:px-16">
-      <header class="flex items-center justify-between text-sm uppercase tracking-[0.3em] text-muted">
-        <span>Portfolio</span>
-        <span>{new Date().getFullYear()}</span>
-      </header>
-      <div class="mt-12 flex flex-col gap-8">
-        <div>
-          <p class="font-mono text-xs uppercase tracking-[0.5em] text-muted">{profile.name}</p>
-          <h1 class="mt-4 font-display text-5xl font-semibold leading-tight md:text-6xl lg:text-[4.5rem]">
-            {profile.headline.leading}{' '}
-            <span class="bg-accent px-2 text-white">{profile.headline.accent}</span>{' '}
-            {profile.headline.trailing}
-          </h1>
-        </div>
-        <p class="max-w-xl text-lg leading-relaxed text-muted">{profile.summary}</p>
-        <div class="flex flex-wrap gap-6 text-sm">
-          <a
-            class="group inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary px-5 py-2 font-medium uppercase tracking-[0.3em] text-white transition hover:-translate-y-0.5 hover:bg-accent"
-            href={`mailto:${profile.email}`}
-          >
-            Let's collaborate
-            <span aria-hidden="true" class="transition group-hover:translate-x-1">→</span>
-          </a>
-          <a
-            class="inline-flex items-center gap-2 rounded-full border border-primary px-5 py-2 font-medium uppercase tracking-[0.3em] text-primary transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </div>
-      <footer class="mt-12 grid gap-6 sm:grid-cols-3">
-        {highlights.map((item) => (
-          <div class="rounded-2xl border border-primary/5 bg-background/60 p-4 shadow-card shadow-black/5">
-            <p class="text-xs uppercase tracking-[0.35em] text-muted">{item.label}</p>
-            <p class="mt-2 text-base font-medium" set:html={item.value} />
-          </div>
-        ))}
-      </footer>
-    </div>
+  <RoomHero />
 
-    <aside class="flex flex-1 flex-col justify-between bg-accent px-8 py-10 text-white md:px-12 lg:px-16">
-      <div class="flex items-center justify-between text-sm uppercase tracking-[0.3em] opacity-80">
-        <span>Selected Work</span>
-        <span>01 — 03</span>
+  <!-- About -->
+  <section class="relative border-b-[3px] border-ink bg-wall-deep px-5 py-16 sm:px-8 md:px-12 lg:py-20" id="about">
+    <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.35em] text-lemon">In the room</p>
+        <h2 class="section-title mt-3 text-paper">Quiet craft.<br />Clear leadership.</h2>
       </div>
-      <div class="mt-12 flex flex-1 flex-col justify-center gap-10">
-        <div class="h-36 w-36 self-end border border-white/40">
-          <div class="h-full w-full border border-white/70" />
-        </div>
-        <ul class="flex flex-col gap-8">
-          {projects.map((project) => (
-            <li class="flex flex-col gap-2 border-l-2 border-white/40 pl-6">
-              <span class="font-mono text-xs uppercase tracking-[0.4em] opacity-80">{project.year}</span>
-              <h2 class="font-display text-2xl font-semibold">{project.name}</h2>
-              <p class="text-sm leading-relaxed text-white/90">{project.description}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="flex items-center justify-between text-xs uppercase tracking-[0.3em] opacity-80">
-        <span>{profile.availability}</span>
-        <span>{profile.location}</span>
-      </div>
-    </aside>
-  </section>
-
-  <section class="grid gap-12 px-8 py-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] md:px-12 lg:px-24">
-    <div class="flex flex-col gap-8">
-      <h2 class="font-display text-3xl font-semibold">Experience</h2>
-      <p class="text-lg leading-relaxed text-muted">
-        A track record of guiding digital transformation for national brands and public sector teams, taking products from discovery
-        through iterative delivery and long-term optimisation.
-      </p>
-      <ol class="grid gap-6">
-        {experience.map((item) => (
-          <li class="rounded-3xl border border-primary/5 bg-white p-6 shadow-card shadow-black/5">
-            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 class="font-display text-xl font-semibold">{item.title}</h3>
-                <p class="text-sm uppercase tracking-[0.25em] text-muted">{item.company}</p>
-              </div>
-              <span class="text-sm font-medium text-primary/80">{item.period}</span>
-            </div>
-            <p class="mt-4 text-sm leading-relaxed text-muted">{item.description}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-    <div class="grid gap-8 md:grid-cols-2">
-      <div class="md:col-span-2">
-        <h2 class="font-display text-3xl font-semibold">Ways I add value</h2>
-        <p class="mt-4 text-lg leading-relaxed text-muted">
-          From shaping product strategy to establishing engineering rituals, I help teams move faster without sacrificing quality or
-          care for the humans using their software.
+      <div>
+        <p class="max-w-2xl text-lg font-semibold leading-relaxed text-paper/95 md:text-xl">
+          {profile.summary}
+        </p>
+        <p class="mt-6 max-w-xl text-base font-semibold text-lemon">
+          {profile.availability}
         </p>
       </div>
-      {capabilities.map((item) => (
-        <div class="rounded-3xl border border-primary/5 bg-white p-6 shadow-card shadow-black/5">
-          <p class="text-sm uppercase tracking-[0.3em] text-muted">{item}</p>
-        </div>
-      ))}
     </div>
   </section>
+
+  <!-- Experience -->
+  <section class="relative border-b-[3px] border-ink bg-paper px-5 py-16 sm:px-8 md:px-12 lg:py-20" id="experience">
+    <div class="mx-auto max-w-6xl">
+      <p class="text-xs font-bold uppercase tracking-[0.35em] text-wall-deep">Along the wall</p>
+      <h2 class="section-title mt-3">Experience</h2>
+      <ol class="mt-10 divide-y-[3px] divide-ink border-y-[3px] border-ink">
+        {
+          experience.map((item) => (
+            <li class="grid gap-3 py-8 md:grid-cols-[10rem_1fr] md:gap-8">
+              <p class="font-display text-lg font-semibold text-floor">{item.period}</p>
+              <div>
+                <h3 class="font-display text-2xl font-semibold text-ink">{item.title}</h3>
+                <p class="mt-1 text-sm font-bold uppercase tracking-[0.2em] text-wall-deep">{item.company}</p>
+                <p class="mt-3 max-w-2xl text-base font-semibold leading-relaxed text-ink/80">{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Selected work -->
+  <section class="relative border-b-[3px] border-ink bg-wall px-5 py-16 sm:px-8 md:px-12 lg:py-20" id="work">
+    <div class="mx-auto max-w-6xl">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.35em] text-paper/80">On the table</p>
+          <h2 class="section-title mt-3 text-paper">Selected work</h2>
+        </div>
+        <!-- Small decorative tabletop shapes -->
+        <div class="flex items-center gap-2" aria-hidden="true">
+          <span class="h-8 w-8 rounded-full bg-blush ink-border"></span>
+          <span class="h-6 w-10 bg-lemon ink-border"></span>
+          <span class="h-10 w-4 bg-sky ink-border"></span>
+        </div>
+      </div>
+      <ul class="mt-10 divide-y-[3px] divide-ink border-y-[3px] border-ink bg-paper/15">
+        {
+          projects.map((project) => (
+            <li class="py-7 sm:py-8">
+              <div class="flex flex-wrap items-baseline gap-3">
+                <span class="inline-block border-[3px] border-ink bg-lemon px-2 py-0.5 font-display text-sm font-bold text-ink">
+                  {project.year}
+                </span>
+                <h3 class="font-display text-xl font-semibold text-paper sm:text-2xl">{project.name}</h3>
+              </div>
+              <p class="mt-3 max-w-3xl text-base font-semibold leading-relaxed text-paper/90">{project.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="relative border-b-[3px] border-ink bg-blush px-5 py-16 sm:px-8 md:px-12 lg:py-20" id="capabilities">
+    <div class="mx-auto max-w-6xl">
+      <p class="text-xs font-bold uppercase tracking-[0.35em] text-ink/70">What I bring</p>
+      <h2 class="section-title mt-3">Ways of working</h2>
+      <p class="mt-4 max-w-2xl text-base font-semibold leading-relaxed text-ink/80 md:text-lg">
+        From shaping product strategy to establishing engineering rituals—helping teams move faster without losing care for the people using the software.
+      </p>
+      <ul class="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+        {
+          capabilities.map((item) => (
+            <li class="border-b-[3px] border-ink pb-1 font-display text-lg font-semibold text-ink md:text-xl">{item}</li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact / floor -->
+  <footer class="relative bg-floor px-5 py-16 sm:px-8 md:px-12 lg:py-20" id="contact">
+    <div class="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.35em] text-lemon">Goodnight, then hello</p>
+        <h2
+          class="mt-3 font-display text-4xl font-semibold leading-tight text-paper md:text-5xl"
+          style="text-shadow: 3px 3px 0 #1A1A1A;"
+        >
+          Let’s build something<br />worth staying up for.
+        </h2>
+        <p class="mt-4 font-semibold text-paper/90">{profile.location}</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a class="cta-primary" href={`mailto:${profile.email}`}>{profile.email}</a>
+        <a class="cta-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <p class="mx-auto mt-12 max-w-6xl text-xs font-bold uppercase tracking-[0.25em] text-paper/60">
+      © {new Date().getFullYear()} {profile.name}
+    </p>
+  </footer>
 </BaseLayout>

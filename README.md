@@ -1,7 +1,8 @@
 # Luke Edmonds — Portfolio
 
-A refreshed personal site for Luke Edmonds, built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
-The design leans into a split-screen, editorial aesthetic to deliver a confident and professional presentation of Luke's experience.
+Personal site for Luke Edmonds, built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+
+The visual direction is inspired by the cozy, flat-colour “great green room” feeling of mid-century children’s-book illustration—saturated greens and reds, lemon accents, a night-sky window—without copying any book artwork or typography.
 
 ## Getting Started
 
@@ -10,32 +11,28 @@ npm install
 npm run dev
 ```
 
-Then open <http://localhost:4321> to view the site locally.
+Open <http://localhost:4321>.
 
-## Available Scripts
+## Scripts
 
-- `npm run dev` – Start the local development server
-- `npm run build` – Generate a production build
-- `npm run preview` – Preview the production build locally
-- `npm run lint` – Run Astro type and content checks
+- `npm run dev` — local development server
+- `npm run build` — production build to `dist/`
+- `npm run preview` — preview the production build
+- `npm run lint` — Astro check
 
-## Project Structure
+## Structure
 
 ```
-.
-├── public/          # Static assets
-├── src/
-│   ├── data/        # Centralised profile content for Luke
-│   ├── layouts/     # Shared page layouts
-│   ├── pages/       # Astro pages
-│   └── styles/      # Global styles and Tailwind layer
-├── astro.config.mjs # Astro configuration
-├── tailwind.config.mjs
-└── tsconfig.json
+src/
+  components/   # Room hero and shared UI
+  data/         # Profile, experience, projects, capabilities
+  layouts/      # Base HTML shell
+  pages/        # Routes
+  styles/       # Global CSS + design tokens
 ```
 
-Key biography, project, and capability details live in `src/data/profile.ts` for easy editing without touching layout code.
+Edit biography and work history in `src/data/profile.ts`.
 
 ## Deployment
 
-Astro builds to the `dist/` directory. Deploy the static output with your preferred static hosting provider.
+Astro builds static output to `dist/`. Deploy with any static host.
